@@ -1,0 +1,31 @@
+#!/bin/bash
+
+get_dependency() {
+	local pkg_list
+
+	# packages
+	pkg_list="$(cat ${TOP_DIR}/packages | tr " " "\n" | sort | uniq | tr "\n" " ")"
+	[ -z "$(sudo dpkg -l | grep wiringpi-dev)" ] && sudo apt-get install -y ${pkg_list}
+}
+
+get_tools() {
+	local arch
+	local tool_chain
+
+	arch=$(dpkg --print-architecture)
+	case ${arch} in
+	arm)
+		tool_chain="arm-linux-gnueabi"
+	;;
+	arm64)
+		tool_chain="aarch64-linux-gnu"
+	;;
+	*)
+		echo "Not support env"
+		exit 1
+	;;
+	esac
+
+	GCC_COMPILER=${tool_chain}-gcc
+	GXX_COMPILER=${tool_chain}-g++
+}

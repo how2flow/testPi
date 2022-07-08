@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# file path
+TOP_DIR="$( cd "$( dirname "$BASH_SOURCE" )" && pwd -P )"
+
+# path of directories
+BUILD_DIR=${TOP_DIR}/build
+INSTALL_DIR=${TOP_DIR}/install
+
+# functions
+. ${TOP_DIR}/functions
+
+# pre-install
+get_tools
+get_dependency
+
+# export
+export CC=${GCC_COMPILER}
+export CXX=${GXX_COMPILER}
+
+[ ! -d "${BUILD_DIR}" ] && mkdir -p ${BUILD_DIR}
+[ ! -d "${INSTALL_DIR}" ] && mkdir -p ${INSTALL_DIR}
+
+cd ${BUILD_DIR}
+cmake ..
+make install

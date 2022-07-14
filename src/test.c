@@ -1,5 +1,8 @@
+#include <errno.h>
 #include <stdio.h>
+#include <string.h>
 #include <wiringPi.h>
+#include <wiringPiSPI.h>
 
 #include "test.h"
 
@@ -39,4 +42,18 @@ void gpio_test(int pin)
 	delay(500);
 	//reset pin
 	pinMode(pin,INPUT);
+}
+
+int spi_test(int dev_id, unsigned char* data, int size)
+{
+	int times;
+
+	for (times = 0; times < 100; ++times) {
+		if (wiringPiSPIDataRW(0, data, size) == -1) {
+			printf("SPI failure: %s\n", strerror(errno));
+			return 0;
+		}
+	}
+
+	return 1;
 }

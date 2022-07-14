@@ -21,5 +21,12 @@ target_compile_options(gpio PUBLIC -g -Wall)
 target_include_directories(gpio PUBLIC ${CMAKE_SOURCE_DIR}/include)
 target_link_libraries(gpio wiringPi wiringPiDev m pthread rt crypt)
 
+# spi
+add_executable(spi src/spi.c src/test.c)
+target_compile_options(spi PUBLIC -g -Wall)
+target_include_directories(spi PUBLIC ${CMAKE_SOURCE_DIR}/include)
+target_link_libraries(spi wiringPi wiringPiDev m pthread rt crypt)
+
 # === install === #
 install(TARGETS gpio DESTINATION ./)
+install(TARGETS spi DESTINATION ./)

@@ -10,7 +10,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include <wiringPi.h>
 
 #include "test.h"
 

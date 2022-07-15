@@ -1,10 +1,8 @@
-#include <errno.h>
 #include <stdio.h>
 #include <string.h>
-#include <wiringPi.h>
-#include <wiringPiSPI.h>
 
 #include "test.h"
+#include "thread.h"
 
 //wpi number at 40 pin header
 int phyHeaderPins[PHY] = {
@@ -46,13 +44,30 @@ int gpio_test(int pin)
 	return 0;
 }
 
+int serial_test(char *dev, void *serial_send, void *serial_receive) {
+	int fd;
+	pthread_t th1, th2;
+
+	if ((fd = serialOpen(dev, BAUD)) < 0) {
+		printf("ERROR\n");
+		return 1;
+	}
+
+	printf("serial TEST\n");
+	pthread_create(&th1, NULL, serial_send, (void *)&fd);
+	pthread_create(&th2, NULL, serial_receive, (void *)&fd);
+
+	while (1);
+
+	return 0;
+}
+
 int spi_test(int dev_id, unsigned char* data, int size)
 {
 	int times;
 
 	for (times = 0; times < 100; ++times) {
 		if (wiringPiSPIDataRW(0, data, size) == -1) {
-			printf("SPI failure: %s\n", strerror(errno));
 			return 0;
 		}
 	}

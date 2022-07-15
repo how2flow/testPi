@@ -31,7 +31,7 @@ int phyHeaderPins[PHY] = {
 	-1,29
 };
 
-void gpio_test(int pin)
+int gpio_test(int pin)
 {
 	pinMode(pin,OUTPUT);
 	digitalWrite(pin,HIGH);
@@ -42,6 +42,8 @@ void gpio_test(int pin)
 	delay(500);
 	//reset pin
 	pinMode(pin,INPUT);
+
+	return 0;
 }
 
 int spi_test(int dev_id, unsigned char* data, int size)

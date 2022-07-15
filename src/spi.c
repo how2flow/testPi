@@ -39,6 +39,7 @@ static int print_err(void)
 	printf("add or correct option\n");
 	printf("add option -h or --help, help use testPi.\n");
 	printf("hint: $ sudo ./spi -h	or	$ sudo ./spi --help\n");
+
 	return 0;
 }
 

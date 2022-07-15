@@ -109,6 +109,7 @@ static int gpio_pins(void)
 			continue;
 		gpio_test(pin);
 	}
+
 	return 0;
 }
 
@@ -134,6 +135,7 @@ static int print_err(void)
 	printf("add or correct option\n");
 	printf("add option -h or --help, help use testPi.\n");
 	printf("hint: $ sudo ./gpio -h	or	$ sudo ./gpio --help\n");
+
 	return 0;
 }
 

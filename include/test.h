@@ -19,7 +19,7 @@
 #define	SPI_TIMES 100
 
 //test functions
-void gpio_test(int pin);
+int gpio_test(int pin);
 int spi_test(int dev_id, unsigned char* data, int size);
 /*--------------------------------------------------------*/
 #endif

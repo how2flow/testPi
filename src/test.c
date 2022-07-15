@@ -75,9 +75,9 @@ int spi_test(int dev_id, unsigned char* data, int size)
 
 	for (times = 0; times < 100; ++times) {
 		if (wiringPiSPIDataRW(0, data, size) == -1) {
-			return 0;
+			return 1;
 		}
 	}
 
-	return 1;
+	return 0;
 }

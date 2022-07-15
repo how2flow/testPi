@@ -85,8 +85,10 @@ int main(int argc, char **argv)
 			ret = spi_test(SPI_BUS, data, size);
 			end = millis();
 
-			if (!ret)
+			if (ret) {
+				printf("error!\n");
 				break;
+			}
 
 			timePerTransaction = ((double)(end - start) / (double)SPI_TIMES) / 1000.0;
 			dataSpeed = (double)(size * 8) / (1024.0 * 1024.0) / timePerTransaction;

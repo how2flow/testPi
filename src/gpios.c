@@ -116,7 +116,7 @@ static int gpio_pins(void)
 // print
 static int print_help(void)
 {
-	printf("Usage: gpio [-opt] [--option]\n\n");
+	printf("Usage: gpios [-opt] [--option]\n\n");
 	printf("===== options =====\n");
 	printf("-a --analog: test ADC pin 25, 29\n");
 	printf("-b --byte: test gpio pins 0 ~ 7\n");
@@ -124,8 +124,8 @@ static int print_help(void)
 	printf("-h --help: print help message\n");
 	printf("-s --single: test gpio single pin\n\n");
 	printf("[e.g]\n");
-	printf("./gpio -g\n");
-	printf("./gpio -s 21\n");
+	printf("./gpios -g\n");
+	printf("./gpios -s 21\n");
 
 	return 0;
 }
@@ -134,7 +134,7 @@ static int print_err(void)
 {
 	printf("add or correct option\n");
 	printf("add option -h or --help, help use testPi.\n");
-	printf("hint: $ sudo ./gpio -h	or	$ sudo ./gpio --help\n");
+	printf("hint: $ sudo ./gpios -h	or	$ sudo ./gpios --help\n");
 
 	return 0;
 }

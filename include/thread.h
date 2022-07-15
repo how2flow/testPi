@@ -2,6 +2,7 @@
 /* Author: steve.jeong          */
 /* e-mail: jkhpro1003@gmail.com */
 /* date: 2022.07.15             */
+/* last-update: 2022.07.15      */
 /*------------------------------*/
 
 #ifndef _THREAD_H_

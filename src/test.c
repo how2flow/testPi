@@ -1,3 +1,10 @@
+/*------------------------------*/
+/* Author: steve.jeong          */
+/* e-mail: jkhpro1003@gmail.com */
+/* date: 2022.07.08             */
+/* last-update: 2022.07.15      */
+/*------------------------------*/
+
 #include <stdio.h>
 #include <string.h>
 

@@ -1,3 +1,10 @@
+/*------------------------------*/
+/* Author: steve.jeong          */
+/* e-mail: jkhpro1003@gmail.com */
+/* date: 2022.07.15             */
+/* last-update: 2022.07.15      */
+/*------------------------------*/
+
 #include <getopt.h>
 #include <stdio.h>
 #include <string.h>

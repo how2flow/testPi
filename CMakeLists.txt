@@ -3,7 +3,7 @@ project(ioctrls)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_VERBOSE_MAKEFILE ON)
-set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install)
+set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR})
 
 # === custom vars === #
 set(LINKS wiringPi wiringPiDev m pthread rt crypt)
@@ -17,7 +17,7 @@ function(regist arg)
 	target_compile_options(${arg} PUBLIC -g -Wall)
 	target_include_directories(${arg} PUBLIC ${CMAKE_SOURCE_DIR}/include)
 	target_link_libraries(${arg} ${LINKS})
-	install(TARGETS ${arg} DESTINATION ./)
+	install(TARGETS ${arg} DESTINATION ./bin)
 endfunction()
 
 # === global === #
@@ -27,9 +27,6 @@ include_directories(${WIRINGPI_INCLUDE_DIRS} ${PI_PATH})
 # link_libraries()
 
 # === regist programs === #
-# gpio
-regist(gpios)
-# uart
+regist(gpio)
 regist(uart)
-# spi
 regist(spi)

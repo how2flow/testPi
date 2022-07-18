@@ -5,7 +5,7 @@ TOP_DIR="$( cd "$( dirname "$BASH_SOURCE" )" && pwd -P )"
 
 # path of directories
 BUILD_DIR=${TOP_DIR}/build
-INSTALL_DIR=${TOP_DIR}/install
+EXEC_DIR=${TOP_DIR}/bin
 
 # functions
 . ${TOP_DIR}/functions
@@ -18,9 +18,10 @@ get_dependency
 export CC=${GCC_COMPILER}
 export CXX=${GXX_COMPILER}
 
-[ ! -d "${BUILD_DIR}" ] && mkdir -p ${BUILD_DIR}
-[ ! -d "${INSTALL_DIR}" ] && mkdir -p ${INSTALL_DIR}
+set_directory ${BUILD_DIR}
+set_directory ${EXEC_DIR}
 
 cd ${BUILD_DIR}
 cmake ..
+make -j4
 make install

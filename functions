@@ -29,3 +29,7 @@ get_tools() {
 	GCC_COMPILER=${tool_chain}-gcc
 	GXX_COMPILER=${tool_chain}-g++
 }
+
+set_directory() {
+	[ ! -d $1 ] && mkdir -p $1
+}

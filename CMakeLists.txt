@@ -6,7 +6,19 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install)
 
 # === custom vars === #
+set(LINKS wiringPi wiringPiDev m pthread rt crypt)
 set(PI_PATH /usr/local/include)
+set(UTILS src/test.c src/thread.c)
+
+# === custom functions === #
+function(regist arg)
+	set(SRCS src/${arg}.c ${UTILS})
+	add_executable(${arg} ${SRCS})
+	target_compile_options(${arg} PUBLIC -g -Wall)
+	target_include_directories(${arg} PUBLIC ${CMAKE_SOURCE_DIR}/include)
+	target_link_libraries(${arg} ${LINKS})
+	install(TARGETS ${arg} DESTINATION ./)
+endfunction()
 
 # === global === #
 # add_compile_options()
@@ -14,26 +26,10 @@ include_directories(${WIRINGPI_INCLUDE_DIRS} ${PI_PATH})
 # link_directories()
 # link_libraries()
 
-# === target === #
+# === regist programs === #
 # gpio
-add_executable(gpios src/gpios.c src/test.c src/thread.c)
-target_compile_options(gpios PUBLIC -g -Wall)
-target_include_directories(gpios PUBLIC ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(gpios wiringPi wiringPiDev m pthread rt crypt)
-
+regist(gpios)
 # uart
-add_executable(uart src/uart.c src/test.c src/thread.c)
-target_compile_options(uart PUBLIC -g -Wall)
-target_include_directories(uart PUBLIC ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(uart wiringPi wiringPiDev m pthread rt crypt)
-
+regist(uart)
 # spi
-add_executable(spi src/spi.c src/test.c src/thread.c)
-target_compile_options(spi PUBLIC -g -Wall)
-target_include_directories(spi PUBLIC ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(spi wiringPi wiringPiDev m pthread rt crypt)
-
-# === install === #
-install(TARGETS gpios DESTINATION ./)
-install(TARGETS uart DESTINATION ./)
-install(TARGETS spi DESTINATION ./)
+regist(spi)

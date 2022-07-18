@@ -12,3 +12,4 @@ Makefile
 # directory
 build/
 install/
+bin/

@@ -2,14 +2,17 @@
 /* Author: steve.jeong          */
 /* e-mail: jkhpro1003@gmail.com */
 /* date: 2022.07.08             */
-/* last-update: 2022.07.15      */
+/* last-update: 2022.07.19      */
 /*------------------------------*/
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "test.h"
 #include "thread.h"
+
+#define _CRT_SECURE_NO_WARNINGS
 
 //wpi number at 40 pin header
 int phyHeaderPins[PHY] = {
@@ -47,6 +50,19 @@ int gpio_test(int pin)
 	delay(500);
 	//reset pin
 	pinMode(pin,INPUT);
+
+	return 0;
+}
+
+int i2c_test(int idx)
+{
+	char cmd[100] = "i2cdetect -y ";
+	char bus[2];
+
+	bus[0] = idx + 0x30;
+	bus[1] = '\0';
+	strcat(cmd, bus);
+	system(cmd);
 
 	return 0;
 }

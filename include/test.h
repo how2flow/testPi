@@ -22,12 +22,14 @@
 
 // serial
 #define BAUD 115200
+
 // spi
 #define	SPI_BUS 0
 #define	SPI_SIZE (1024*1024)
 #define	SPI_TIMES 100
 
 //test functions
+int i2c_test(int idx);
 int gpio_test(int pin);
 int serial_test(char *dev, void *serial_send, void *serial_receive);
 int spi_test(int dev_id, unsigned char* data, int size);

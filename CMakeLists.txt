@@ -27,6 +27,7 @@ include_directories(${WIRINGPI_INCLUDE_DIRS} ${PI_PATH})
 # link_libraries()
 
 # === regist programs === #
+regist(i2c)
 regist(gpio)
 regist(uart)
 regist(spi)

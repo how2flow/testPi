@@ -2,3 +2,4 @@ g++
 gcc
 libwiringpi-dev
 wiringpi
+i2c-tools

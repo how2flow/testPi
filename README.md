@@ -10,6 +10,7 @@ gcc
 g++
 libwiringpi-dev
 wiringpi
+i2c-tools
 ```
 
 #### Reference

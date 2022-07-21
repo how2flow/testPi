@@ -83,7 +83,7 @@ static int adc_pins(void)
 
 static int gpio_byte(void)
 {
-	uint8_t num;
+	int num;
 
 	printf("[test Byte]\n");
 	initailize_pins();

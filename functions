@@ -17,6 +17,9 @@ get_tools() {
 	arm)
 		tool_chain="arm-linux-gnueabi"
 	;;
+	armhf)
+		tool_chain="arm-linux-gnueabihf"
+	;;
 	arm64)
 		tool_chain="aarch64-linux-gnu"
 	;;

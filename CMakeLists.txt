@@ -12,12 +12,12 @@ set(UTILS src/test.c src/thread.c)
 
 # === custom functions === #
 function(regist arg)
-	set(SRCS src/${arg}.c ${UTILS})
-	add_executable(${arg} ${SRCS})
-	target_compile_options(${arg} PUBLIC -g -Wall)
-	target_include_directories(${arg} PUBLIC ${CMAKE_SOURCE_DIR}/include)
-	target_link_libraries(${arg} ${LINKS})
-	install(TARGETS ${arg} DESTINATION ./bin)
+  set(SRCS src/${arg}.c ${UTILS})
+  add_executable(${arg} ${SRCS})
+  target_compile_options(${arg} PUBLIC -g -Wall)
+  target_include_directories(${arg} PUBLIC ${CMAKE_SOURCE_DIR}/include)
+  target_link_libraries(${arg} ${LINKS})
+  install(TARGETS ${arg} DESTINATION ./bin)
 endfunction()
 
 # === global === #

@@ -67,7 +67,8 @@ int i2c_test(int idx)
 	return 0;
 }
 
-int serial_test(char *dev, void *serial_send, void *serial_receive) {
+int serial_test(char *dev, void *serial_send, void *serial_receive)
+{
 	int fd;
 	pthread_t th1, th2;
 

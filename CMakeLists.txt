@@ -8,11 +8,11 @@ set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR})
 # === custom vars === #
 set(LINKS wiringPi wiringPiDev m pthread rt crypt)
 set(PI_PATH /usr/local/include)
-set(UTILS src/test.c src/thread.c)
+set(UTILS src/test.c src/utils/thread.c)
 
 # === custom functions === #
 function(regist arg)
-  set(SRCS src/${arg}.c ${UTILS})
+  set(SRCS src/ioctl/${arg}.c ${UTILS})
   add_executable(${arg} ${SRCS})
   target_compile_options(${arg} PUBLIC -g -Wall)
   target_include_directories(${arg} PUBLIC ${CMAKE_SOURCE_DIR}/include)
